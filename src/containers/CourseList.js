@@ -1,12 +1,17 @@
 import React from 'react';
 import CourseRow from "../components/CourseRow";
 import CourseService from "../services/CourseService";
+
+
+
+
 class CourseList extends React.Component {
     constructor() {
         super();
         this.courseService = CourseService.instance;
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
+        this.deleteCourse = this.deleteCourse.bind(this);
     }
 
 
@@ -14,6 +19,21 @@ class CourseList extends React.Component {
         this.courseService
             .createCourse(this.state.course)
             .then(() => { this.findAllCourses(); });
+    }
+
+    deleteCourse(courseId) {
+        this.courseService
+            .deleteCourse(courseId);
+    }
+
+
+
+
+    courseRows() {
+        var rows = this.state.courses.map((course) => {
+            return <CourseRow course={course} key={course.id}
+                              delete={this.deleteCourse}/>
+        });
     }
 
 
@@ -54,7 +74,7 @@ class CourseList extends React.Component {
 
     }
 
-    
+
 
 
 
