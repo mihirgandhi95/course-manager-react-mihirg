@@ -37,6 +37,17 @@ class CourseList extends React.Component {
     }
 
 
+    editCourse(courseId,courseTitle) {
+        this.setState({
+            course: {
+                title: courseTitle
+            }
+        });
+       /* this.courseService.editCourse(courseId).then(()=> {
+            this.findAllCourses();
+        });*/
+    }
+
     componentDidMount() {
         this.findAllCourses();
     }
@@ -56,7 +67,7 @@ class CourseList extends React.Component {
         if (this.state) {
             courses = this.state.courses.map(
                 function (course) {
-                    return <CourseRow key={course.id} course={course} deleteCourse={self.deleteCourse}/>
+                    return <CourseRow key={course.id} course={course} editCourse ={self.editCourse} deleteCourse={self.deleteCourse}/>
                 }
             )
         }

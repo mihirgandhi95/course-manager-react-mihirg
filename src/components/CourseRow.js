@@ -25,6 +25,9 @@ class CourseRow extends React.Component {
                     <button onClick={() => this.props.deleteCourse(this.props.course.id)}>
                         Delete
                     </button>
+                    <button onClick={() => this.props.editCourse(this.props.course.id,this.props.course.title)}>
+                        Edit
+                    </button>
                 </td>
             </tr>
         )
