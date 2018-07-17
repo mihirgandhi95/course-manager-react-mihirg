@@ -20,8 +20,7 @@ class CourseRow extends React.Component {
                 </Link>
                 </td>
                 <td>
-                    <button onClick={() =>
-                    {this.props.delete(this.props.course.id)}}>
+                    <button onClick={() => this.props.deleteCourse(this.props.course.id)}>
                         Delete
                     </button>
                 </td>

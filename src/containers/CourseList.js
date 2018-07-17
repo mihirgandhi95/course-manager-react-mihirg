@@ -3,8 +3,6 @@ import CourseRow from "../components/CourseRow";
 import CourseService from "../services/CourseService";
 
 
-
-
 class CourseList extends React.Component {
     constructor() {
         super();
@@ -18,21 +16,23 @@ class CourseList extends React.Component {
     createCourse() {
         this.courseService
             .createCourse(this.state.course)
-            .then(() => { this.findAllCourses(); });
+            .then(() => {
+                this.findAllCourses();
+            });
     }
 
     deleteCourse(courseId) {
         this.courseService
-            .deleteCourse(courseId);
+            .deleteCourse(courseId).then(() => {
+                this.findAllCourses();
+            }
+        );
     }
-
-
 
 
     courseRows() {
         var rows = this.state.courses.map((course) => {
-            return <CourseRow course={course} key={course.id}
-                              delete={this.deleteCourse}/>
+            return <CourseRow course={course} key={course.id}/>
         });
     }
 
@@ -50,12 +50,13 @@ class CourseList extends React.Component {
     }
 
     renderCourseRows() {
-        let courses= null;
+        let courses = null;
+        var self = this;
 
-        if(this.state){
-           courses =  this.state.courses.map(
-                function(course){
-                    return <CourseRow key={course.id} course={course} />
+        if (this.state) {
+            courses = this.state.courses.map(
+                function (course) {
+                    return <CourseRow key={course.id} course={course} deleteCourse={self.deleteCourse}/>
                 }
             )
         }
@@ -69,17 +70,13 @@ class CourseList extends React.Component {
     titleChanged(event) {
         console.log('titleChanged');
         this.setState({
-            course: { title: event.target.value }
+            course: {title: event.target.value}
         });
 
     }
 
 
-
-
-
-
-        render() {
+    render() {
         return (
 
             <div>
@@ -94,9 +91,12 @@ class CourseList extends React.Component {
                                    onChange={this.titleChanged}
                                    id="titleFld"
                                    placeholder="cs101"/></th>
-                        <th><button
-                            onClick={this.createCourse}
-                            className="btn btn-primary">Add</button></th>
+                        <th>
+                            <button
+                                onClick={this.createCourse}
+                                className="btn btn-primary">Add
+                            </button>
+                        </th>
                     </tr>
 
                     </thead>

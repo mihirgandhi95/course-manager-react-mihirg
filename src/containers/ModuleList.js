@@ -22,9 +22,11 @@ export default class ModuleList extends Component {
         this.setCourseId = this.setCourseId.bind(this);
         this.moduleService = ModuleService.instance;
     }
+
     setModules(modules) {
         this.setState({modules: modules})
     }
+
     findAllModulesForCourse(courseId) {
         this.moduleService
             .findAllModulesForCourse(courseId)
@@ -46,7 +48,7 @@ export default class ModuleList extends Component {
     createModule() {
         console.log(this.state.module);
         this.moduleService
-            .createModule(this.props.courseId, this.state.module)
+            .createModule(this.props.courseId, this.state.module).then(() =>{ this.findAllModulesForCourse(this.props.courseId);})
     }
     titleChanged(event) {
         console.log(event.target.value);
