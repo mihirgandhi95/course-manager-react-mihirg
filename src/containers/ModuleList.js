@@ -19,10 +19,7 @@ export default class ModuleList extends Component {
         };
         this.createModule = this.createModule.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
-
-        this.setCourseId =
-            this.setCourseId.bind(this);
-
+        this.setCourseId = this.setCourseId.bind(this);
         this.moduleService = ModuleService.instance;
     }
     setModules(modules) {
@@ -37,6 +34,7 @@ export default class ModuleList extends Component {
     setCourseId(courseId) {
         this.setState({courseId: courseId});
     }
+
     componentDidMount() {
         this.setCourseId(this.props.courseId);
     }
