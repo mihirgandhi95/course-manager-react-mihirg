@@ -18,6 +18,9 @@ class CourseManager extends React.Component {
                     </Route>
 
 
+                    <Route path="/course/:courseId/module/:moduleId"
+                           component={CourseEditor}>
+                    </Route>
                     {/*<Route path="/examples">*/}
                     {/*<div>*/}
                     {/*<div className="card-deck">*/}
