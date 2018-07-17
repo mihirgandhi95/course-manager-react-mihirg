@@ -9,12 +9,12 @@ export default class ModuleList extends Component {
             courseId: '',
             module: { title: '' },
             modules: [
-                {title: 'Module 1', id: 123},
+                /*{title: 'Module 1', id: 123},
                 {title: 'Module 2', id: 234},
                 {title: 'Module 3', id: 345},
                 {title: 'Module 4', id: 456},
                 {title: 'Module 5', id: 567},
-                {title: 'Module 6', id: 678}
+                {title: 'Module 6', id: 678}*/
             ]
         };
         this.createModule = this.createModule.bind(this);
@@ -54,10 +54,13 @@ export default class ModuleList extends Component {
         console.log(event.target.value);
         this.setState({module: {title: event.target.value}});
     }
+
     renderListOfModules() {
+        var self = this;
         let modules = this.state.modules.map(function(module){
             return <ModuleListItem module={module}
-                                   key={module.id}/>
+                                   key={module.id}
+                                   courseId={self.state.courseId}/>
         });
         return modules;
     }

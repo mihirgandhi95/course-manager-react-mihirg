@@ -2,6 +2,7 @@ import React from 'react';
 import CourseList from "./CourseList";
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import CourseEditor from "./CourseEditor";
+import ModuleEditor from "./ModuleEditor";
 
 class CourseManager extends React.Component {
     render() {
@@ -19,7 +20,7 @@ class CourseManager extends React.Component {
 
 
                     <Route path="/course/:courseId/module/:moduleId"
-                           component={CourseEditor}>
+                           component={ModuleEditor}>
                     </Route>
                     {/*<Route path="/examples">*/}
                     {/*<div>*/}

@@ -9,6 +9,7 @@ export default class ModuleListItem
         super(props);
         this.state = {
             module : this.props.module
+
         }
     }
 
@@ -18,8 +19,7 @@ export default class ModuleListItem
     render() {
         return (
             <li className="list-group-item">
-                {this.state.module.title}
-                <Link to={`/course/${this.props.course.id}/module/${this.state.module.id}`}>
+                <Link to={`/course/${this.props.courseId}/module/${this.state.module.id}`}>
                     {this.state.module.title}
                 </Link>
                 <span className="float-right">

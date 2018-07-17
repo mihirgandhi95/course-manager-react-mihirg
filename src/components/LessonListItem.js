@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default class ModuleListItem
+export default class LessonListItem
 
     extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            module : this.props.module
+            module : this.props.module,
+            lesson : this.props.lesson
         }
     }
 
@@ -18,12 +19,12 @@ export default class ModuleListItem
     render() {
         return (
             <li className="list-group-item">
-                {this.state.module.title}
-                <Link to={`/course/${this.props.course.id}/module/${this.state.module.id}`}>
-                    {this.state.module.title}
+
+                <Link to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.state.lesson.id}`}>
+                    {this.state.lesson.title}
                 </Link>
                 <span className="float-right">
-                <i onClick={() => this.props.deleteModule(this.props.module.id)} className="fa fa-trash"></i>
+                <i onClick={() => this.props.deleteLesson(this.props.lesson.id)} className="fa fa-trash"></i>
 
                 <i className="fa fa-pencil">
 
