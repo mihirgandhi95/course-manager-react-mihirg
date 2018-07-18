@@ -10,6 +10,10 @@ export default class LessonService {
     }
 
     findAllLessonsForModule(courseId,moduleId) {
+        if(!moduleId){
+            moduleId = 0
+        }
+
         return fetch(
             LESSON_API_URL
                 .replace('MID', moduleId).replace('CID',courseId))

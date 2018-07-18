@@ -3,6 +3,9 @@ import CourseList from "./CourseList";
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import CourseEditor from "./CourseEditor";
 import ModuleEditor from "./ModuleEditor";
+import LessonEditor from "./LessonEditor";
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 class CourseManager extends React.Component {
     render() {
@@ -14,14 +17,20 @@ class CourseManager extends React.Component {
                     <Route path="/courses"
                            component={CourseList}>
                     </Route>
-                    <Route path="/course/:courseId"
+
+                    <Route exact path="/course/:courseId"
                            component={CourseEditor}>
                     </Route>
 
 
-                    <Route path="/course/:courseId/module/:moduleId"
+                    <Route exact path="/course/:courseId/module/:moduleId"
                            component={ModuleEditor}>
                     </Route>
+
+                    <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId"
+                           component={LessonEditor}>
+                    </Route>
+
                     {/*<Route path="/examples">*/}
                     {/*<div>*/}
                     {/*<div className="card-deck">*/}

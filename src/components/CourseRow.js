@@ -22,10 +22,11 @@ class CourseRow extends React.Component {
                 </Link>
                 </td>
                 <td>
-                    <button onClick={() => this.props.deleteCourse(this.props.course.id)}>
+
+                    <button className="btn btn-danger" onClick={() => this.props.deleteCourse(this.props.course.id)}>
                         Delete
                     </button>
-                    <button onClick={() => this.props.editCourse(this.props.course.id,this.props.course.title)}>
+                    <button className="btn btn-warning"  onClick={() => this.props.editCourse(this.props.course.id,this.props.course.title)}>
                         Edit
                     </button>
                 </td>

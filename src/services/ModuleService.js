@@ -18,6 +18,10 @@ export default class ModuleService {
 
 
     findAllModulesForCourse(courseId) {
+
+        if(!courseId){
+            courseId = 0
+        }
         return fetch(
             MODULE_API_URL
                 .replace('CID', courseId))
@@ -25,6 +29,8 @@ export default class ModuleService {
                 return response.json();
             })
     }
+
+
 
     createModule(courseId, module) {
         return fetch(MODULE_API_URL.replace('CID', courseId),

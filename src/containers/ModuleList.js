@@ -52,6 +52,7 @@ export default class ModuleList extends Component {
         this.moduleService
             .createModule(this.props.courseId, this.state.module).then(() =>{ this.findAllModulesForCourse(this.props.courseId);})
     }
+
     titleChanged(event) {
         console.log(event.target.value);
         this.setState({module: {title: event.target.value}});
@@ -60,7 +61,8 @@ export default class ModuleList extends Component {
     deleteModule(moduleId) {
         this.moduleService
             .deleteModule(moduleId).then(() => {
-                this.findAllModules();
+            window.location.replace('/course/'+ this.state.courseId );
+              //  this.findAllModulesForCourse();
             }
         );
     }
@@ -101,13 +103,14 @@ export default class ModuleList extends Component {
                 <h3>Module List for course: {this.state.courseId}</h3>
                 <input onChange={this.titleChanged}
                        value={this.state.module.title}
-                       placeholder="title"
+                       placeholder="new Module Title"
                        className="form-control"/>
                 <button onClick={this.createModule} className="btn btn-primary btn-block">
                     <i className="fa fa-plus"></i>
                 </button>
                 <br/>
                 <ul className="list-group">
+                {/*<ul className="nav nav-tabs">*/}
                     {this.renderListOfModules()}
                 </ul>
             </div>

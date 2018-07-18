@@ -1,6 +1,8 @@
 import React from 'react';
 import CourseRow from "../components/CourseRow";
 import CourseService from "../services/CourseService";
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 
 class CourseList extends React.Component {

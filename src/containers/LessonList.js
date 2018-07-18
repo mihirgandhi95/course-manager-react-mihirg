@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import LessonListItem from '../components/LessonListItem';
 import LessonService from '../services/LessonService'
 
-export default class ModuleList extends Component {
+export default class LessonList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             moduleId: '',
+            modules:[],
             lesson: { title: '' },
             lessons :[],
             courseId: ''
@@ -36,13 +37,12 @@ export default class ModuleList extends Component {
     }
 
 
+    setCourseId(courseId){
+        this.setState({courseId: courseId});
+    }
 
     setModuleId(moduleId) {
         this.setState({moduleId: moduleId});
-    }
-
-    setCourseId(courseId){
-        this.setState({courseId: courseId});
     }
 
     componentDidMount() {
@@ -72,11 +72,11 @@ export default class ModuleList extends Component {
     renderListOfLessons() {
 
 
-        var lesson = null;
+        var lessons
         var self = this;
 
         if (this.state) {
-            lesson = this.state.lessons.map(function (lesson) {
+            lessons = this.state.lessons.map((lesson)=> {
                 return <LessonListItem lesson={lesson}
                                        key={lesson.id}
                                        courseId={self.state.courseId}
@@ -84,7 +84,7 @@ export default class ModuleList extends Component {
                                        deleteLesson={self.deleteLesson}
                 />
             });
-            return lesson;
+            return lessons;
         }
     }
 
@@ -95,15 +95,17 @@ export default class ModuleList extends Component {
                 <h3>Lesson List for  module: {this.state.moduleId}</h3>
                 <input onChange={this.titleChanged}
                        value={this.state.lesson.title}
-                       placeholder="title"
+                       placeholder="new Lesson Title"
                        className="form-control"/>
                 <button onClick={this.createLesson} className="btn btn-primary btn-block">
                     <i className="fa fa-plus"></i>
                 </button>
                 <br/>
-                <ul className="list-group">
+                {/*<ul className="list-group">*/}
+                <ul className="nav nav-tabs">
                     {this.renderListOfLessons()}
                 </ul>
+               < br/>
             </div>
         );
     }

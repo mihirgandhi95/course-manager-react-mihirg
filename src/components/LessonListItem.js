@@ -18,20 +18,13 @@ export default class LessonListItem
 
     render() {
         return (
-            <li className="list-group-item">
-
-                <Link to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.state.lesson.id}`}>
+            <li className="nav-item">
+                <a className="nav-link active"
+                   href={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.state.lesson.id}`}>
                     {this.state.lesson.title}
-                </Link>
-                <span className="float-right">
-                <i onClick={() => this.props.deleteLesson(this.props.lesson.id)} className="fa fa-trash"></i>
+                    <i onClick={() => this.props.deleteLesson(this.props.lesson.id)} className="fa fa-trash"></i></a>
 
-                <i className="fa fa-pencil">
-
-                </i>
-                </span>
             </li>
-
-        );
+    );
     }
 }
