@@ -29,6 +29,8 @@ export default class ModuleList extends Component {
     }
 
 
+
+
     findAllLessonsForModule(courseId,moduleId) {
         this.lessonService.findAllLessonsForModule(courseId,moduleId).then((lessons)=>{this.setLessons(lessons)});
     }
@@ -68,14 +70,22 @@ export default class ModuleList extends Component {
     }
 
     renderListOfLessons() {
-        var self=this;
-        let lessons = this.state.lessons.map(function(lesson){
-            return <LessonListItem lesson={lesson}
-                                   key={lesson.id}
-                                   courseId={self.state.courseId}
-                                   moduleId={self.state.moduleId}/>
-        });
-        return lessons;
+
+
+        var lesson = null;
+        var self = this;
+
+        if (this.state) {
+            lesson = this.state.lessons.map(function (lesson) {
+                return <LessonListItem lesson={lesson}
+                                       key={lesson.id}
+                                       courseId={self.state.courseId}
+                                       moduleId={self.state.moduleId}
+                                       deleteLesson={self.deleteLesson}
+                />
+            });
+            return lesson;
+        }
     }
 
 
