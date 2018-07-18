@@ -6,6 +6,7 @@ import ModuleEditor from "./ModuleEditor";
 import LessonEditor from "./LessonEditor";
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
+import '../../src/style.css';
 
 class CourseManager extends React.Component {
     render() {

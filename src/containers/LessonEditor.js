@@ -6,6 +6,7 @@ import LessonList from './LessonList'
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 //import LessonTabs from './LessonTabs';
+import '../../src/style.css';
 
 export default class LessonEditor extends React.Component {
 

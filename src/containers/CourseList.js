@@ -3,7 +3,8 @@ import CourseRow from "../components/CourseRow";
 import CourseService from "../services/CourseService";
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
-
+import CourseCard from "../components/CourseCard";
+import '../../src/style.css';
 
 class CourseList extends React.Component {
     constructor() {
@@ -80,6 +81,24 @@ class CourseList extends React.Component {
         )
     }
 
+
+    renderCourseCard(){
+        let courses = null;
+        var self = this;
+
+        if(this.state){
+            courses = this.state.courses.map(
+                function(course) {
+                    return <CourseCard key={course.id} course={course} editCourse ={self.editCourse} deleteCourse={self.deleteCourse}/>
+                }
+            )
+        }
+        return (
+            courses
+        )
+
+    }
+
     titleChanged(event) {
         console.log('titleChanged');
         this.setState({
@@ -91,7 +110,6 @@ class CourseList extends React.Component {
 
     render() {
         return (
-
             <div>
                 <h2>Course List</h2>
                 <table className="table">
@@ -113,10 +131,17 @@ class CourseList extends React.Component {
                     </tr>
 
                     </thead>
-                    <tbody>
-                    {this.renderCourseRows()}
-                    </tbody>
+                    {/*<tbody>*/}
+                    {/*{this.renderCourseRows()}*/}
+                    {/*</tbody>*/}
                 </table>
+            <div className="row">
+
+                <div className="card-deck">
+                    {this.renderCourseCard()}
+
+                </div>
+            </div>
             </div>
         )
     }
