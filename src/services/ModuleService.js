@@ -1,6 +1,17 @@
+
+
+
+//const MODULE_API_URL =
+        'http://localhost:8080/api/course/CID/module';
+
+
+//const MODULE_API_URL_DELETE = 'http://localhost:8080/api/module';
+
 const MODULE_API_URL =
-    'http://localhost:8080/api/course/CID/module';
-const MODULE_API_URL_DELETE = 'http://localhost:8080/api/module';
+    'https://course-manager-react-mihirg.herokuapp.com/api/course/CID/module';
+
+
+const MODULE_API_URL_DELETE = 'https://course-manager-react-mihirg.herokuapp.com/api/module';
 
 let _singleton = Symbol();
 export default class ModuleService {

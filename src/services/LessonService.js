@@ -1,6 +1,11 @@
+
+//const LESSON_API_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson';
+//const LESSON_API_URL_DELETE= 'http://localhost:8080/api/lesson';
+
+
 const LESSON_API_URL =
-    'http://localhost:8080/api/course/CID/module/MID/lesson';
-const LESSON_API_URL_DELETE= 'http://localhost:8080/api/lesson';
+    'https://course-manager-react-mihirg.herokuapp.com/api/course/CID/module/MID/lesson';
+const LESSON_API_URL_DELETE= 'https://course-manager-react-mihirg.herokuapp.com/api/lesson';
 
 let _singleton = Symbol();
 export default class LessonService {
