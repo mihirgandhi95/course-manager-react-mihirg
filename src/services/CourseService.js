@@ -1,5 +1,7 @@
 let _singleton = Symbol();
 const COURSE_API_URL = 'http://localhost:8080/api/course';
+const COURSE_API_URL_NEW = 'http://localhost:8080/api/course/CID';
+
 class CourseService {
     constructor(singletonToken) {
         if (_singleton !== singletonToken)
@@ -18,6 +20,21 @@ class CourseService {
             });
     }
 
+
+
+
+    findCourseByTitle(courseTitle){
+        if(!courseTitle){
+            courseTitle = ""
+        }
+        return fetch(
+            COURSE_API_URL_NEW
+                .replace('CID', courseTitle))
+            .then(function (response) {
+                return response.json();
+            });
+
+    }
 
     deleteCourse(courseId) {
         return fetch(COURSE_API_URL + '/' + courseId,

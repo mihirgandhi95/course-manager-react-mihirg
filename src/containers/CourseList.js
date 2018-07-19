@@ -16,6 +16,7 @@ class CourseList extends React.Component {
         this.deleteCourse = this.deleteCourse.bind(this);
         this.searchCourse = this.searchCourse.bind(this);
         this.updateCourse = this.updateCourse.bind(this);
+        this.findCourseByTitle = this.findCourseByTitle.bind(this);
     }
 
 
@@ -70,7 +71,11 @@ class CourseList extends React.Component {
 
     }
 
-
+    findCourseByTitle(courseTitle) {
+        this.courseService
+            .findCourseByTitle(courseTitle)
+            .then((courses) => {this.setState({courses: courses})});
+    }
 
 
     componentDidMount() {
@@ -132,6 +137,7 @@ class CourseList extends React.Component {
     searchCourse()
     {
         var key = this.refs.searchKey.value;
+        this.courseService.findCourseByTitle(key).then((courses) => {this.setState({courses: courses})});
 
 
     }
