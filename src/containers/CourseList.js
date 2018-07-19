@@ -186,11 +186,11 @@ class CourseList extends React.Component {
                     {/*</tbody>*/}
                 </table>
             <div className="row">
+                {this.renderCourseCard()}
+                {/*<div className="card-deck row">*/}
+                   {/**/}
 
-                <div className="card-deck">
-                    {this.renderCourseCard()}
-
-                </div>
+                {/*</div>*/}
             </div>
             </div>
         )
