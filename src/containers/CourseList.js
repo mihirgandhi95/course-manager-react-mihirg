@@ -5,6 +5,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import CourseCard from "../components/CourseCard";
 import '../../src/style.css';
+import $ from 'jquery';
 
 class CourseList extends React.Component {
     constructor() {
@@ -13,6 +14,8 @@ class CourseList extends React.Component {
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
         this.deleteCourse = this.deleteCourse.bind(this);
+        this.searchCourse = this.searchCourse.bind(this);
+        this.updateCourse = this.updateCourse.bind(this);
     }
 
 
@@ -41,15 +44,34 @@ class CourseList extends React.Component {
 
 
     editCourse(courseId,courseTitle) {
-        this.setState({
-            course: {
-                title: courseTitle
-            }
-        });
-       /* this.courseService.editCourse(courseId).then(()=> {
-            this.findAllCourses();
-        });*/
+       // alert("inside edit course")
+      // alert( $("#editCourseTitle"+courseId).val())
+        $("#editCourseTitle"+courseId).css("display","");
+        $("#updateCourseTitle"+courseId).css("display","");
+
+        // var newCourseName = $("#editCourseTitle"+courseId).val();
+        //
+        // alert(newCourseName);
+
+
+
+
+
     }
+
+
+    updateCourse(courseId,courseTitle){
+        var newCourseName = $("#editCourseTitle"+courseId).val();
+        this.courseService.editCourseService(courseId,newCourseName).then(()=>{
+            this.findAllCourses();
+            $("#editCourseTitle"+courseId).css("display","none");
+            $("#updateCourseTitle"+courseId).css("display","none");
+        });
+
+    }
+
+
+
 
     componentDidMount() {
         this.findAllCourses();
@@ -89,7 +111,7 @@ class CourseList extends React.Component {
         if(this.state){
             courses = this.state.courses.map(
                 function(course) {
-                    return <CourseCard key={course.id} course={course} editCourse ={self.editCourse} deleteCourse={self.deleteCourse}/>
+                    return <CourseCard key={course.id} course={course} editCourse ={self.editCourse} updateCourse ={self.updateCourse}  deleteCourse={self.deleteCourse}/>
                 }
             )
         }
@@ -107,6 +129,13 @@ class CourseList extends React.Component {
 
     }
 
+    searchCourse()
+    {
+        var key = this.refs.searchKey.value;
+
+
+    }
+
 
     render() {
         return (
@@ -116,6 +145,21 @@ class CourseList extends React.Component {
                     <thead>
                     <tr>
                         <th>Title</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input className="form-control"
+                                   ref="searchKey"
+                                   id="searchFld"
+                                   placeholder="cs101"/>
+                        </th>
+                        <th>
+                            <button
+                                onClick={this.searchCourse}
+                                className="btn btn-primary">
+                                Search
+                            </button>
+                        </th>
                     </tr>
                     <tr>
                         <th><input className="form-control"

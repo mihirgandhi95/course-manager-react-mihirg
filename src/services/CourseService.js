@@ -29,10 +29,15 @@ class CourseService {
 
 
 
-    editCourse(courseId){
+    editCourseService(courseId,courseTitle){
         return fetch(COURSE_API_URL+ '/' + courseId,
             {
-                method: 'PUT'
+                method: 'PUT',
+                body: courseTitle,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
             })
     }
 

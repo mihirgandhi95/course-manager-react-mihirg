@@ -23,6 +23,7 @@ export default class ModuleList extends Component {
         this.setCourseId = this.setCourseId.bind(this);
         this.deleteModule = this.deleteModule.bind(this);
         this.moduleService = ModuleService.instance;
+
     }
 
     setModules(modules) {
@@ -34,6 +35,8 @@ export default class ModuleList extends Component {
             .findAllModulesForCourse(courseId)
             .then((modules) => {this.setState({modules: modules})});
     }
+
+
 
     setCourseId(courseId) {
         this.setState({courseId: courseId});
@@ -66,6 +69,7 @@ export default class ModuleList extends Component {
             }
         );
     }
+
 
     findAllModules(){
         this.moduleService.findAllModules().then((modules) => {
@@ -100,7 +104,8 @@ export default class ModuleList extends Component {
     render() {
         return (
             <div>
-                <h3>Module List for course: {this.state.courseId}</h3>
+                <h3>Module List for course: {this.state.courseId}   </h3>
+                {/*<h3> Module for course{this.state.module.title} : </h3>*/}
                 <input onChange={this.titleChanged}
                        value={this.state.module.title}
                        placeholder="new Module Title"
