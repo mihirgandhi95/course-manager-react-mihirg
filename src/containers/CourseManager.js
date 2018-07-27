@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import CourseEditor from "./CourseEditor";
 import ModuleEditor from "./ModuleEditor";
 import LessonEditor from "./LessonEditor";
+import TopicEditor from "./TopicEditor";
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../../src/style.css';
@@ -32,6 +33,10 @@ class CourseManager extends React.Component {
                            component={LessonEditor}>
                     </Route>
 
+
+                    <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId"
+                           component={TopicEditor}>
+                    </Route>
                     {/*<Route path="/examples">*/}
                     {/*<div>*/}
                     {/*<div className="card-deck">*/}

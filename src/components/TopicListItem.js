@@ -33,9 +33,7 @@ export default class TopicListItem
 
             <li className="nav-item">
                 <a className="nav-link active"
-                   href={`/course/${this.props.courseId}/module/
-                   ${this.props.moduleId}/lesson/${this.props.lessonId}
-                        /topic/${this.state.topic.id}`}>
+                   href={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.state.topic.id}`}>
 
                 {this.state.topic.title}
                     <i onClick={() => this.props.deleteTopic(this.props.topic.id)} className="fa fa-trash"></i></a>

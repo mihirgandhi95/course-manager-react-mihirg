@@ -17,6 +17,7 @@ class CourseList extends React.Component {
         this.searchCourse = this.searchCourse.bind(this);
         this.updateCourse = this.updateCourse.bind(this);
         this.findCourseByTitle = this.findCourseByTitle.bind(this);
+        this.renderCourseCard = this.renderCourseCard.bind(this);
     }
 
 
@@ -138,8 +139,6 @@ class CourseList extends React.Component {
     {
         var key = this.refs.searchKey.value;
         this.courseService.findCourseByTitle(key).then((courses) => {this.setState({courses: courses})});
-
-
     }
 
 
@@ -179,7 +178,6 @@ class CourseList extends React.Component {
                             </button>
                         </th>
                     </tr>
-
                     </thead>
                     {/*<tbody>*/}
                     {/*{this.renderCourseRows()}*/}
