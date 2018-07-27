@@ -178,7 +178,12 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
             }
 
 
-
+     /*   case constants.TOGGLE:
+            return {
+                widgets: state.widgets,
+                toggle: !state.toggle
+            }
+*/
 
 
         case constants.MOVE_UP:

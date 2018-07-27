@@ -4,6 +4,7 @@ import {DELETE_WIDGET,} from "../constants/index";
 import * as actions from "../actions/index"
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
+
 import $ from "jquery";
 
 const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headingNameChanged}) => {
@@ -218,7 +219,7 @@ const Link = ({widget, preview, linkChanged, linkNameChanged}) => {
 
 
 
-const Widget = ({widgets, preview, widget, incrementPos, decrementPos, deleteWidget,selectWidgetType}) => {
+const Widget = ({widgets,toggle, preview, widget, incrementPos, decrementPos, deleteWidget,selectWidgetType}) => {
 
     let widgetId
     let selectElement
@@ -228,7 +229,12 @@ const Widget = ({widgets, preview, widget, incrementPos, decrementPos, deleteWid
 
             <li>
                 <div hidden={preview}>
+                  {/*  <div hidden={toggle}>*/}
                     {widget.id} {widget.widgetType}
+
+                    {/*   <input className="float-right" type="checkbox" data-toggle="toggle"/>
+                                <label className="float-right"> Edit mode </label>
+                      */}
                     <br/>
 
                     {widgets [0] !== widgets && <button className="fa fa-arrow-up btn-warning" onClick = {()=> incrementPos(widget)}>
@@ -266,6 +272,9 @@ const Widget = ({widgets, preview, widget, incrementPos, decrementPos, deleteWid
                         deleteWidget(widget.id) }> Delete </button>
 
                 </div>
+
+
+
                 <div>
                     {widget.widgetType === 'Heading' && <HeadingContainer widget={widget}/>}
                     {/*{widget.widgetType==='Paragraph'&& <Paragraph/>}*/}
@@ -274,6 +283,7 @@ const Widget = ({widgets, preview, widget, incrementPos, decrementPos, deleteWid
                     {widget.widgetType === 'List' && <ListContainer widget={widget}/>}
                     {widget.widgetType === 'Link' && <LinkContainer widget={widget}/>}
                 </div>
+              {/*  </div>*/}
             </li>
         </div>
     )
@@ -283,7 +293,8 @@ const Widget = ({widgets, preview, widget, incrementPos, decrementPos, deleteWid
 
 const stateToPropsMapper = state => ({
                 widgets: state.widgets,
-                preview: state.preview
+                preview: state.preview,
+             //   toggle: state.toggle
             })
 
 

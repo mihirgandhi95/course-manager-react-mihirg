@@ -38,6 +38,10 @@ class WidgetList extends Component {
                  {/*   <TopicListItem />*/}
                 </button>
 
+              {/*  <button className="btn btn-danger float-right"  onClick={this.props.toggle}>
+                    Toggle
+                </button>
+*/}
 
                 {/*<input type="button" id="primaryButton" onclick="ExistingLogic()" />*/}
 
@@ -51,6 +55,7 @@ class WidgetList extends Component {
                 <button className="float-right btn btn-warning" onClick={this.props.preview}>
                     Preview
                 </button>
+
                 <br/>
                 <br/>
 
@@ -58,7 +63,7 @@ class WidgetList extends Component {
                 <ul>
                     {this.props.widgets.map(widget => (
                         <WidgetContainer widget={widget}
-
+                                        // toggle = {this.props.toggleMode}
                                        //  widgets = {widgets}
                                          preview = {this.props.previewMode}
                                          key={widget.id} />
@@ -84,7 +89,8 @@ class WidgetList extends Component {
 const stateToPropertiesMapper = (state) => (
     {
         widgets: state.widgets,
-        previewMode: state.preview
+        previewMode: state.preview,
+      //  toggleMode: state.toggle
     }
 )
 
@@ -96,7 +102,8 @@ const dispatcherToPropsMapper = dispatch => (
         findAllWidgetsForTopic: (topicId,lessonId,moduleId,courseId) => actions.findAllWidgetsForTopic(dispatch, topicId,lessonId,moduleId,courseId),
         addWidget: () => actions.addWidget(dispatch),
         save: () => actions.save(dispatch),
-        preview: () => actions.preview(dispatch)
+        preview: () => actions.preview(dispatch),
+     //   toggle: () => actions.toggle(dispatch)
 
     }
 )

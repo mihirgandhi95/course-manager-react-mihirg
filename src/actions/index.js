@@ -158,8 +158,18 @@ export const save = dispatch => (
 
 )
 
+
+
 export const preview = dispatch => (
     dispatch({
         type: constants.PREVIEW
     })
 )
+/*
+
+export const toggle = dispatch => (
+    dispatch({
+        type: constants.TOGGLE
+    })
+)
+*/
