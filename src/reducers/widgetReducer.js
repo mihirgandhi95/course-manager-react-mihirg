@@ -6,7 +6,6 @@ import $ from "jquery"
 
 
 // const BASE_URL = 'http://localhost:8080/api/topic/TopicId/widget';
-
 const BASE_URL = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/topic/TopicId/widget';
 
 const calc = 1000;
@@ -304,7 +303,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
             }).then(window.location.reload())
             return {
                 widgets: state.widgets,
-                preview: !state.preview
+               // preview: !state.preview
             }
 
 
@@ -407,7 +406,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                 widgets: [
                     ...state.widgets,
                     {
-                        id: state.widgets.length+(new Date()).getTime(),
+                        id: state.widgets.length+calc,
                         text: 'New Widget',
                         widgetType: 'Paragraph',
                         size: '2',
@@ -416,7 +415,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                         src: '',
                         link: '',
                         widgetOrder: ++orderCount,
-                        edit: true
+                        //edit: true
 
                     },
 
