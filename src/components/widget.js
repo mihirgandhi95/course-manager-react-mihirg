@@ -7,7 +7,7 @@ import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 import $ from "jquery";
 
-const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headingNameChanged}) => {
+const Heading = ({widget, edit, preview, headingTextChanged, headingSizeChanged, headingNameChanged}) => {
     let selectElem
     let inputElem
     let nameElem
@@ -15,6 +15,8 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
 
         <div>
             <div hidden={preview}>
+
+                {/*<div hidden={edit}>*/}
                 <h2> Heading {widget.size}</h2>
                 <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
                        value={widget.text}
@@ -34,6 +36,8 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
                        ref={node => nameElem = node}
                 />
                 <h3>Preview</h3>
+
+                {/*</div>*/}
             </div>
             {widget.size == 1 && <h1> {widget.text}</h1>}
             {widget.size == 2 && <h2> {widget.text}</h2>}
@@ -42,7 +46,7 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
     )
 }
 
-const Paragraph = ({widget, preview, paragraphTextChanged, paragraphSizeChanged, paragraphNameChanged}) => {
+const Paragraph = ({widget,edit, preview, paragraphTextChanged, paragraphSizeChanged, paragraphNameChanged}) => {
     let selectElem
     let inputElem
     let nameElem
@@ -53,6 +57,8 @@ const Paragraph = ({widget, preview, paragraphTextChanged, paragraphSizeChanged,
             {/*<textarea></textarea>*/}
             <div>
                 <div hidden={preview}>
+
+                    {/*<div hidden={edit}>*/}
                     <h2> Paragraph {widget.size}</h2>
                     <select onChange={() => paragraphSizeChanged(widget.id, selectElem.value)}
                             value={widget.size}
@@ -74,6 +80,9 @@ const Paragraph = ({widget, preview, paragraphTextChanged, paragraphSizeChanged,
                                ref={node => nameElem = node}
                         /></p>
                     <h3>Preview</h3>
+
+                    {/*</div>*/}
+
                 </div>
                 {widget.size == 1 && <h1> {widget.text}</h1>}
                 {widget.size == 2 && <h2> {widget.text}</h2>}
@@ -84,7 +93,7 @@ const Paragraph = ({widget, preview, paragraphTextChanged, paragraphSizeChanged,
     )
 }
 
-const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChanged}) => {
+const List = ({widget, preview, edit, listTextChanged, listTypeChanged, listNameChanged}) => {
     {/*<h2>List</h2>*/
     }
 
@@ -97,6 +106,7 @@ const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChange
 
             <div>
                 <div hidden={preview}>
+                    {/*<div hidden={edit}>*/}
                     <h2> List {widget.size}</h2>
                     <textarea onChange={() => listTextChanged(widget.id, inputElem.value)}
                               value={widget.text}
@@ -116,6 +126,8 @@ const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChange
                                ref={node => nameElem = node}
                         /></p>
                     <h3>Preview</h3>
+                    {/*</div>*/}
+
                 </div>
 
                 {widget.size == 2 && <h2> {widget.text}</h2>}
@@ -141,16 +153,18 @@ const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChange
                 }
 
 
-const Image = ({widget, preview, imageURLChanged, imageNameChanged}) => {
+const Image = ({widget, edit, preview,searchChanged, imageURLChanged, imageNameChanged}) => {
 
     {/*<h2>Image</h2>*/}
     let inputElem
+    let searchElem
     let nameElem
     return (
         <div>
 
             <div>
                 <div hidden={preview}>
+                    {/*<div hidden={edit}>*/}
                     <h2> Image </h2>
                     <input placeholder = "Image Link" onChange={() => imageURLChanged(widget.id, inputElem.value)}
                               value={widget.src}
@@ -163,12 +177,26 @@ const Image = ({widget, preview, imageURLChanged, imageNameChanged}) => {
                                ref={node => nameElem = node}
                         /></p>
                     <h3>Preview</h3>
+                    {/*</div>*/}
                 </div>
 
                 {/*{widget.size == 2 && <h2> {widget.text}</h2>}*/}
                 <div>
                     <img src={widget.src} alt="ImageDefault" width= "400" height="400"></img>
                 </div>
+
+
+             {/*   <form action="https://www.google.com/images" className="searchform" method="get" name="searchform" target="_blank">
+                    <input name="sitesearch" type="hidden" value="google.com"/>
+                        <input autoComplete="on" className="form-control search" name="q" placeholder="Search in google.com" required="required"  type="text"/>
+                            <button className="button" type="submit">Search</button>
+                </form>*/}
+{/*
+                   <input placeholder = "Image Link" onChange={() => searchChanged(widget.id, searchElem.value)}
+                          value={widget.item}
+                          ref={node => searchElem =node}
+                   />*/}
+
 
             </div>
         </div>
@@ -177,7 +205,7 @@ const Image = ({widget, preview, imageURLChanged, imageNameChanged}) => {
 
 }
 
-const Link = ({widget, preview, linkChanged, linkNameChanged}) => {
+const Link = ({widget, edit,  preview, linkChanged, linkNameChanged}) => {
 
     {/*<h2>Image</h2>*/}
     let inputElem
@@ -187,6 +215,7 @@ const Link = ({widget, preview, linkChanged, linkNameChanged}) => {
 
             <div>
                 <div hidden={preview}>
+                    {/*<div hidden={edit}>*/}
                     <h2> Link</h2>
                     <input placeholder = "Link" onChange={() => linkChanged(widget.id, inputElem.value)}
                            value={widget.link}
@@ -199,6 +228,7 @@ const Link = ({widget, preview, linkChanged, linkNameChanged}) => {
                                ref={node => nameElem = node}
                         /></p>
                     <h3>Preview</h3>
+                    {/*</div>*/}
                 </div>
 
                 {/*{widget.size == 2 && <h2> {widget.text}</h2>}*/}
@@ -219,7 +249,7 @@ const Link = ({widget, preview, linkChanged, linkNameChanged}) => {
 
 
 
-const Widget = ({widgets,toggle, preview, widget, incrementPos, decrementPos, deleteWidget,selectWidgetType}) => {
+const Widget = ({widgets,edit, upArrow, downArrow, toggle, preview, widget, incrementPos, decrementPos,editWidget,  deleteWidget,selectWidgetType}) => {
 
     let widgetId
     let selectElement
@@ -227,8 +257,25 @@ const Widget = ({widgets,toggle, preview, widget, incrementPos, decrementPos, de
         <div className="shadow-lg p-3 mb-5 bg-white rounded">
 
 
+       {/*     () => {
+            if(widget.edit == true){
+            return !preview
+        }
+            else return preview;
+        }*/}
+
+       {/*     () => {if(widget.edit) {
+            preview =!{preview}
+        }
+            else{
+            preview = {preview}
+        }
+        }*/}
+
             <li>
+                {/*<div hidden = {edit}>*/}
                 <div hidden={preview}>
+                    {/*<div hidden={edit}>*/}
                   {/*  <div hidden={toggle}>*/}
                     {widget.id} {widget.widgetType}
 
@@ -236,15 +283,22 @@ const Widget = ({widgets,toggle, preview, widget, incrementPos, decrementPos, de
                                 <label className="float-right"> Edit mode </label>
                       */}
                     <br/>
-
-                    {widgets [0] !== widgets && <button className="fa fa-arrow-up btn-warning" onClick = {()=> incrementPos(widget)}>
+                    {/* hidden = {upArrow}*/}
+                    {/*hidden={this.props.upArrowMode}*/}
+                    {/*<div  className="upArrowButton">*/}
+                    {widgets [0] !== widget && <button className="fa fa-arrow-up btn-warning" onClick = {()=> incrementPos(widget)}>
                     </button>
                     }
+                    {/*</div>*/}
 
-                    {widgets [widgets.length-1] !== widgets && <button className="fa fa-arrow-down btn-warning" onClick = {
+                    {/*hidden = {this.props.previewMode}*/}
+                    {/*hidden={this.props.downArrowMode}*/}
+                    {/*<div   className="downArrowButton">*/}
+                    {widgets [widgets.length-1] !== widget && <button className="fa fa-arrow-down btn-warning" onClick = {
                         () => decrementPos(widget)}>
                     </button>
                     }
+                    {/*</div>*/}
 
                     <br />
                     {/*  <select value={widget.widgetType} onChange={e => dispatch({
@@ -271,17 +325,23 @@ const Widget = ({widgets,toggle, preview, widget, incrementPos, decrementPos, de
                     <button className="float-right btn btn-danger"   onClick={() =>
                         deleteWidget(widget.id) }> Delete </button>
 
+                    {/*<button className="float-right btn btn-warning" onClick={() => edit(widget)}>
+                        Edit
+                    </button>*/}
+
+                {/*</div>*/}
+           {/*     </div>*/}
                 </div>
 
-
+               {/* edit = {this.props.editMode}*/}
 
                 <div>
-                    {widget.widgetType === 'Heading' && <HeadingContainer widget={widget}/>}
+                    {widget.widgetType === 'Heading' && <HeadingContainer widget={widget} />}
                     {/*{widget.widgetType==='Paragraph'&& <Paragraph/>}*/}
-                    {widget.widgetType === 'Paragraph' && <ParagraphContainer widget={widget}/>}
-                    {widget.widgetType === 'Image' && <ImageContainer widget={widget}/>}
-                    {widget.widgetType === 'List' && <ListContainer widget={widget}/>}
-                    {widget.widgetType === 'Link' && <LinkContainer widget={widget}/>}
+                    {widget.widgetType === 'Paragraph' && <ParagraphContainer widget={widget}  />}
+                    {widget.widgetType === 'Image' && <ImageContainer widget={widget} />}
+                    {widget.widgetType === 'List' && <ListContainer widget={widget} />}
+                    {widget.widgetType === 'Link' && <LinkContainer widget={widget} />}
                 </div>
               {/*  </div>*/}
             </li>
@@ -290,10 +350,22 @@ const Widget = ({widgets,toggle, preview, widget, incrementPos, decrementPos, de
 }
 
 
+/*function changeState(preview){
+  return !preview;
+}*/
 
 const stateToPropsMapper = state => ({
                 widgets: state.widgets,
                 preview: state.preview,
+              upArrowMode:state.upArrow,
+                downArrowMode: state.downArrow,
+               // editMode: state.edit,
+                //edit: state.edit,
+
+
+              /*  upArrow: state.upArrow,
+                downArrow: state.downArrow,*/
+
              //   toggle: state.toggle
             })
 
@@ -322,6 +394,8 @@ const dispatchToPropsMapper = dispatch => ({
         actions.imageNameChanged(dispatch, widgetId, newName),
     imageURLChanged: (widgetId, newURL) =>
         actions.imageURLChanged(dispatch, widgetId, newURL),
+    searchChanged: (widgetId, newItem) =>
+        actions.searchChanged(dispatch, widgetId, newItem),
     linkNameChanged: (widgetId, newName) =>
         actions.linkNameChanged(dispatch, widgetId, newName),
     linkChanged: (widgetId, newURL) =>
@@ -330,7 +404,10 @@ const dispatchToPropsMapper = dispatch => ({
     decrementPos: (widget) => actions.decrementPos(dispatch, widget),
     deleteWidget: (widgetId) => actions.deleteWidget(dispatch,widgetId),
     selectWidgetType: (widgetId, widgetType)=> actions.selectWidgetType(dispatch, widgetId,widgetType),
-
+    upArrow: () => actions.upArrow(dispatch),
+    downArrow: () => actions.downArrow(dispatch),
+   // edit: (widget) => actions.edit(dispatch,widget),
+   // editWidget: (widgetId) => actions.editWidget(dispatch,widgetId),
 
 
 })

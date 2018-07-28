@@ -156,6 +156,9 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                 })
             }
 
+        case constants.SEARCH_CHANGED:
+
+
 
         case constants.LIST_TYPE_CHANGED:
             // alert('Heading Size Changed')
@@ -177,6 +180,36 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                 preview: !state.preview
             }
 
+        case constants.EDIT:
+            /* newState = Object.assign({}, state)
+             newState.preview = !state.preview*/
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id == action.id){
+                        alert('can edit the new widget with id:'+widget.id);
+                    }
+                }),
+                    preview: !state.preview,
+               // edit: !state.edit,
+            }
+
+ /*       case constants.UP_ARROW:
+            let newState={
+                widgets: state.widgets.filter((widget) => {
+                    if(widget.widgetOrder === 1) {
+
+                    }
+                    return true;
+                })
+            }
+            return JSON.parse(JSON.stringify(newState))
+*/
+/*
+
+        case constants.DOWN_ARROW:
+
+*/
+
 
      /*   case constants.TOGGLE:
             return {
@@ -192,16 +225,21 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
 
             //changing the number assigned to widgetOrder
             let index = widgets.indexOf(action.widget);
-
+            let destination;
             let source = widgets[index].widgetOrder;
-            let destination = widgets[index-1].widgetOrder;
-            widgets[index - 1].widgetOrder = source;
-            widgets[index].widgetOrder = destination;
+            if(index == 0) {
+                alert('cannot move the widget up!! Choose another widget');
+            }
+            if(index!== 0) {
+                destination = widgets[index - 1].widgetOrder;
+                widgets[index - 1].widgetOrder = source;
+                widgets[index].widgetOrder = destination;
 
-            //actually interchanging the objects using splice
-            widgets.move(index , index - 1);
-            widgets= widgets.splice(0);
-            state.widgets=widgets;
+                //actually interchanging the objects using splice
+                widgets.move(index, index - 1);
+                widgets = widgets.splice(0);
+                state.widgets = widgets;
+            }
             return state;
 
 
@@ -213,15 +251,22 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
             //changing the number assigned to widgetOrder
             index = widgets.indexOf(action.widget);
 
-            source = widgets[index].widgetOrder;
-            destination = widgets[index+1].widgetOrder;
-            widgets[index + 1].widgetOrder = source;
-            widgets[index].widgetOrder = destination;
 
-            //actually interchanging the objects using splice
-            widgets.move(index-1 , index);
-            widgets= widgets.splice(0);
-            state.widgets=widgets;
+            source = widgets[index].widgetOrder;
+
+            if(index == widgets.length-1) {
+                alert('cannot move widget down!, choose another widget!');
+            }
+            if(index !== widgets.length-1) {
+                destination = widgets[index + 1].widgetOrder;
+                widgets[index + 1].widgetOrder = source;
+                widgets[index].widgetOrder = destination;
+
+                //actually interchanging the objects using splice
+                widgets.move(index - 1, index);
+                widgets = widgets.splice(0);
+                state.widgets = widgets;
+            }
             return state;
 
 
@@ -234,9 +279,13 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                         widget.widgetType = action.widgetType
                     }
                     return true;
-                })
+                }),
+                //preview:!state.preview
             }
+            //return newState
             return JSON.parse(JSON.stringify(newState))
+
+
 
         case constants.SAVE:
             alert('saving to database!');
@@ -250,7 +299,10 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                     'content-type': 'application/json'
                 }
             }).then(window.location.reload())
-            return state;
+            return {
+                widgets: state.widgets,
+                preview: !state.preview
+            }
 
 
 
@@ -347,11 +399,12 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
 
 
 
+
             return {
                 widgets: [
                     ...state.widgets,
                     {
-                        id: calc,
+                        id: state.widgets.length+calc+'getTime()',
                         text: 'New Widget',
                         widgetType: 'Paragraph',
                         size: '2',
@@ -359,13 +412,17 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                         listType: 'ordered',
                         src: '',
                         link: '',
-                        widgetOrder: ++orderCount
+                        widgetOrder: ++orderCount,
+                        edit: true
 
-                    }
-                ]
+                    },
+
+                ],
+               // preview: !state.preview,
             }
 
         default:
+
             return state;
     }
 }

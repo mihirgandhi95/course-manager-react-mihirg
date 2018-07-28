@@ -83,6 +83,15 @@ export const linkChanged =(dispatch,widgetId, newLink) => dispatch(
     }
 )
 
+export const searchChanged= (dispatch, widgetId, newItem) => dispatch(
+    {
+        type: constants.SEARCH_CHANGED,
+        id: widgetId,
+        items: newItem
+    }
+)
+
+
 export const linkNameChanged =(dispatch,widgetId, newName) => dispatch(
     {
         type: constants.LINK_NAME_CHANGED, id:widgetId, name: newName
@@ -131,7 +140,8 @@ export const findAllWidgetsForTopic = (dispatch,topicId,lessonId,moduleId, cours
         response => (response.json())).then(
         widgets=>dispatch({
             type: constants.FIND_ALL_WIDGETS_FOR_TOPIC,
-            widgets: widgets
+            widgets: widgets,
+
         })
     )
 }
@@ -145,9 +155,14 @@ export const findAllWidgets = dispatch => {
         }))
 }
 
-export const addWidget = dispatch => (
+export const addWidget = (dispatch,widgets) => (
 
-    dispatch({type: constants.ADD_WIDGET})
+    dispatch(
+        {
+            type: constants.ADD_WIDGET,
+            widgets: widgets
+        }
+        )
 )
 
 export const save = dispatch => (
@@ -165,6 +180,43 @@ export const preview = dispatch => (
         type: constants.PREVIEW
     })
 )
+
+
+export const edit = (dispatch,widget) => (
+    dispatch({
+        type: constants.EDIT,
+        widget:widget
+    })
+)
+
+export const editWidget  = (dispatch,widgetId) =>
+{
+   /* return fetch('http://localhost:8080/api/widget/'+widgetId,
+        {
+            method: 'DELETE'
+        }).then(widgets => dispatch({
+        type: constants.EDIT,
+        id: widgetId
+    }))*/
+    dispatch({
+        type: constants.EDIT,
+        id: widgetId,
+    })
+
+
+}
+
+export const upArrow = dispatch => {
+    dispatch({
+        type: constants.UP_ARROW
+    })
+}
+
+export const downArrow = dispatch => {
+    dispatch({
+        type: constants.DOWN_ARROW
+    })
+}
 /*
 
 export const toggle = dispatch => (
