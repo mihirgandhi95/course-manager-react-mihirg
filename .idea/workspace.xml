@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acd11a15-28e8-4021-9833-edfe5f2a07d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/index.js" afterPath="$PROJECT_DIR$/src/actions/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/widget.js" afterPath="$PROJECT_DIR$/src/components/widget.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants/index.js" afterPath="$PROJECT_DIR$/src/constants/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/widgetList.js" afterPath="$PROJECT_DIR$/src/containers/widgetList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/widgetReducer.js" afterPath="$PROJECT_DIR$/src/reducers/widgetReducer.js" />
-    </list>
+    <list default="true" id="acd11a15-28e8-4021-9833-edfe5f2a07d0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -23,8 +17,8 @@
       <file leaf-file-name="widgetList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/widgetList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="57" column="98" lean-forward="false" selection-start-line="57" selection-start-column="98" selection-end-line="57" selection-end-column="98" />
+            <state relative-caret-position="-952">
+              <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
               <folding>
                 <element signature="e#141#192#0" expanded="true" />
               </folding>
@@ -328,12 +322,12 @@
       <updated>1531719355262</updated>
       <workItem from="1531719356497" duration="448000" />
       <workItem from="1532211359810" duration="1347000" />
-      <workItem from="1532578497086" duration="42983000" />
+      <workItem from="1532578497086" duration="43399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99149000" />
+    <option name="totallyTimeSpent" value="99565000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -788,8 +782,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/widgetList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="57" column="98" lean-forward="false" selection-start-line="57" selection-start-column="98" selection-end-line="57" selection-end-column="98" />
+        <state relative-caret-position="-952">
+          <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
           <folding>
             <element signature="e#141#192#0" expanded="true" />
           </folding>
