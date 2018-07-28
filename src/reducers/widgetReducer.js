@@ -5,7 +5,10 @@ import * as constants from "../constants/index"
 import $ from "jquery"
 
 
-const BASE_URL = 'http://localhost:8080/api/topic/TopicId/widget';
+// const BASE_URL = 'http://localhost:8080/api/topic/TopicId/widget';
+
+const BASE_URL = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/topic/TopicId/widget';
+
 const calc = 1000;
 Array.prototype.move
     = function (from, to) {

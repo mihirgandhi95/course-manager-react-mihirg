@@ -1,13 +1,12 @@
 
 
+//
+// const TOPIC_API_URL ='http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic';
+// const TOPIC_API_URL_DELETE= 'http://localhost:8080/api/topic';
 
-const TOPIC_API_URL ='http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic';
-const TOPIC_API_URL_DELETE= 'http://localhost:8080/api/topic';
 
-
-// const TOPIC_API_URL =
-//     'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic';
-// const TOPIC_API_URL_DELETE= 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/topic';
+const TOPIC_API_URL = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic';
+const TOPIC_API_URL_DELETE= 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/topic';
 
 let _singleton = Symbol();
 export default class TopicService {
