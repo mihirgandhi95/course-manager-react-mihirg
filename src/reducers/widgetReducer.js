@@ -179,7 +179,8 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
             newState.preview = !state.preview*/
             return {
                 widgets: state.widgets,
-                preview: !state.preview
+                preview: !state.preview,
+                //baconIsReady: !state.baconIsReady
             }
 
         case constants.EDIT:
@@ -192,6 +193,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                     }
                 }),
                     preview: !state.preview,
+                    //baconIsReady: false,
                // edit: !state.edit,
             }
 

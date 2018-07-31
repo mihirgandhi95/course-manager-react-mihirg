@@ -4,6 +4,8 @@ import {DELETE_WIDGET,} from "../constants/index";
 import * as actions from "../actions/index"
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
+import Toggle from 'react-toggle';
+import "react-toggle/style.css";
 
 import $ from "jquery";
 
@@ -321,6 +323,8 @@ const Widget = ({widgets,edit, upArrow, downArrow, toggle, preview, widget, incr
                     })
                 )}>Delete
                 </button>*/}
+
+
 
                     <button className="float-right btn btn-danger"   onClick={() =>
                         deleteWidget(widget.id) }> Delete </button>

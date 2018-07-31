@@ -6,15 +6,21 @@ import * as actions from "../actions"
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import TopicListItem from "../components/TopicListItem";
 import $ from "jquery";
+import Toggle from 'react-toggle';
+import "react-toggle/style.css";
 
 class WidgetList extends Component {
     constructor(props){
         super(props);
+       /* this.state = {
+            baconIsReady: false,
+        }*/
         var topicId = this.props.topicId;
         var lessonId = this.props.lessonId;
         var moduleId = this.props.moduleId;
         var courseId = this.props.courseId;
         this.props.findAllWidgetsForTopic(topicId,lessonId,moduleId,courseId);
+
         //widgets = this.props.widgets;
         // this.props.findAllWidgets();
         //console.log(this.props.topicId);
@@ -31,12 +37,45 @@ class WidgetList extends Component {
             <div>
                 <br/>
                 <h3> Widget List for Topic {this.props.topicId} Length:{this.props.widgets.length} </h3>
+              {/*  <label className="float-right">
+                    <Toggle
+                        defaultChecked={this.state.baconIsReady}
+                        hidden ={this.props.previewMode}
+                        onChange={this.props.preview} />
+                    <span></span>
+                </label>
+
+*/}
+
+                <label className="float-right">
+                    <Toggle
+                        //defaultChecked={this.props.toggleMode}
+                        checked = {this.props.previewMode}
+                        className='custom-classname'
+                        //icons = {false}
+                        onChange={this.props.preview} />
+                    <span></span>
+                </label>
+
+
+
+                {/*<label>*/}
+                    {/*<Toggle*/}
+                        {/*defaultChecked={this.state.tofuIsReady}*/}
+                        {/*icons={false}*/}
+                        {/*onChange={this.handleTofuChange} />*/}
+                    {/*<span>No icons</span>*/}
+                {/*</label>*/}
+
+
+
+
                 {/*<button className= "float-right btn btn-success" hidden = {this.props.previewMode} onClick={this.props.save}>
                     Save
                 </button>*/}
                 {/*<div hidden = {this.props.editMode}>*/}
                {/* hidden = {this.props.previewMode}*/}
-                <button className= "float-right btn btn-success"   onClick= {this.props.save}>
+                <button className= "float-right btn btn-success"  hidden ={this.props.previewMode}  onClick= {this.props.save}>
                     Save
                  {/*   <TopicListItem />*/}
                 </button>
@@ -56,11 +95,11 @@ class WidgetList extends Component {
             {/*})*/}
                {/* hidden ={ this.props.editMode}*/}
 
-                <button className="float-right btn btn-warning"  hidden ={this.props.previewMode}  onClick={this.props.preview}>
+               {/* <button className="float-right btn btn-warning"  hidden ={this.props.previewMode}  onClick={this.props.preview}>
                     Preview
-                </button>
-
-                <button className="float-right btn btn-warning"  hidden={!(this.props.previewMode)} onClick={this.props.preview}>
+                </button>*/}
+               {/* hidden={!(this.props.previewMode)}*/}
+                <button className="float-right btn btn-warning"  hidden={!(this.props.previewMode)}  onClick={this.props.preview}>
                     Edit
                 </button>
                 {/*</div>*/}
@@ -79,6 +118,7 @@ class WidgetList extends Component {
                                        //  widgets = {widgets}
                                          //edit = {this.props.editMode}
                                          preview = {this.props.previewMode}
+                                        // toggle = {this.props.toggleMode}
                                          key={widget.id} />
                     ))}
                 </ul>
@@ -140,6 +180,9 @@ const stateToPropertiesMapper = (state) => (
     {
         widgets: state.widgets,
         previewMode: state.preview,
+       // toggleMode: state.toggle,
+       // baconIsReady: state.baconIsReady,
+       // baconIsReady: state.baconIsReady,
        // editMode: state.edit,
 
       //  toggleMode: state.toggle
