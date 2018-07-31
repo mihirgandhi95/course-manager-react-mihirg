@@ -371,6 +371,9 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
             }
 
         case constants.FIND_ALL_WIDGETS_FOR_TOPIC:
+
+           // $("WidgetContainer").sortable();
+
             newState = Object.assign({}, state)
             newState.widgets = action.widgets;
             return newState;

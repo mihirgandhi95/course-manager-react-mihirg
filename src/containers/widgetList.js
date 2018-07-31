@@ -5,6 +5,7 @@ import WidgetContainer from "../components/widget";
 import * as actions from "../actions"
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import TopicListItem from "../components/TopicListItem";
+import $ from "jquery";
 
 class WidgetList extends Component {
     constructor(props){
@@ -81,6 +82,13 @@ class WidgetList extends Component {
                                          key={widget.id} />
                     ))}
                 </ul>
+
+                {/*Importing jquery -ui  does not work to make the widgets draggable . Not as easy as in simple jQuery. react requires
+                 a lot more environment setup. decided not to do it. */}
+                {/*$(function() =>  {*/}
+                {/*$("WidgetContainer").sortable()*/}
+                 {/*});*/}
+
 
                 <button className="float-right btn btn-success" onClick={this.props.addWidget}>Add Widget</button>
 

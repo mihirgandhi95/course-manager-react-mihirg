@@ -41,16 +41,12 @@ export default class TopicService {
         { return response.json(); })
     }
 
-
-
     deleteTopic(topicId) {
         return fetch(TOPIC_API_URL_DELETE + '/' + topicId,
             {
                 method: 'DELETE'
             })
     }
-
-
 
     static get instance() {
         if(!this[_singleton])
