@@ -216,13 +216,13 @@ export const editWidget  = (dispatch,widgetId) =>
 
 export const upArrow = dispatch => {
     dispatch({
-        type: constants.UP_ARROW
+        type: constants.MOVE_UP
     })
 }
 
 export const downArrow = dispatch => {
     dispatch({
-        type: constants.DOWN_ARROW
+        type: constants.MOVE_DOWN
     })
 }
 /*
