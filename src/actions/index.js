@@ -5,12 +5,12 @@ import {SELECT_WIDGET_TYPE} from "../constants/index";
 
 
 
-// const BASE_WIDGET_URL = "http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic/TID/widget";
-// const URL1 = "http://localhost:8080/api/widget"
+const BASE_WIDGET_URL = "http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic/TID/widget";
+const URL1 = "http://localhost:8080/api/widget/"
 
-const URL1 = "https://cs5610-summer2-2018-mihirg.herokuapp.com/api/widget/"
-const BASE_WIDGET_URL = "https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic/TID/widget"
-
+// const URL1 = "https://cs5610-summer2-2018-mihirg.herokuapp.com/api/widget/"
+// const BASE_WIDGET_URL = "https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic/TID/widget"
+//
 
 
 // {`/course/${this.props.courseId}/module/
@@ -110,13 +110,13 @@ export const linkNameChanged =(dispatch,widgetId, newName) => dispatch(
 
 export const incrementPos =(dispatch,widget) => dispatch(
     {
-        type: constants.MOVE_UP, widget:widget
+        type: constants.MOVE_UP, widget :widget
     }
 )
 
 export const decrementPos =(dispatch,widget) => dispatch(
     {
-        type: constants.MOVE_DOWN, widget:widget
+        type: constants.MOVE_DOWN, widget: widget
     }
 )
 

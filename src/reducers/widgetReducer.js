@@ -5,8 +5,8 @@ import * as constants from "../constants/index"
 import $ from "jquery"
 
 
-// const BASE_URL = 'http://localhost:8080/api/topic/TopicId/widget';
-const BASE_URL = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/topic/TopicId/widget';
+const BASE_URL = 'http://localhost:8080/api/topic/TopicId/widget';
+// const BASE_URL = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/topic/TopicId/widget';
 
 const calc = 1000;
 Array.prototype.move
@@ -224,18 +224,20 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
 
 
         case constants.MOVE_UP:
-            let widgets = state.widgets;
+            var widgets = state.widgets;
             var state = JSON.parse(JSON.stringify(state));
 
             //changing the number assigned to widgetOrder
-            let index = widgets.indexOf(action.widget);
-            let destination;
-            let source = widgets[index].widgetOrder;
-            if(index == 0) {
-                alert('cannot move the widget up!! Choose another widget');
-            }
-            if(index!== 0) {
-                destination = widgets[index - 1].widgetOrder;
+            var index = widgets.indexOf(action.widget);
+            var source = widgets[index].widgetOrder;
+            var destination = widgets[index - 1].widgetOrder;
+            // destination = widgets[index - 1].widgetOrder;
+
+            // if(index == 0) {
+            //     alert('cannot move the widget up!! Choose another widget');
+            // // }
+            // if(index!== 0) {
+
                 widgets[index - 1].widgetOrder = source;
                 widgets[index].widgetOrder = destination;
 
@@ -243,34 +245,34 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) =>
                 widgets.move(index, index - 1);
                 widgets = widgets.splice(0);
                 state.widgets = widgets;
-            }
+            // }
             return state;
 
 
 
         case constants.MOVE_DOWN:
-            widgets = state.widgets;
+            var widgets = state.widgets;
             var state = JSON.parse(JSON.stringify(state));
 
             //changing the number assigned to widgetOrder
-            index = widgets.indexOf(action.widget);
+            var index = widgets.indexOf(action.widget);
 
 
-            source = widgets[index].widgetOrder;
+            var source = widgets[index].widgetOrder;
+            var destination = widgets[index + 1].widgetOrder;
+            // if(index == widgets.length-1) {
+            //     alert('cannot move widget down!, choose another widget!');
+            // }
+            // if(index !== widgets.length-1) {
 
-            if(index == widgets.length-1) {
-                alert('cannot move widget down!, choose another widget!');
-            }
-            if(index !== widgets.length-1) {
-                destination = widgets[index + 1].widgetOrder;
                 widgets[index + 1].widgetOrder = source;
                 widgets[index].widgetOrder = destination;
 
                 //actually interchanging the objects using splice
-                widgets.move(index - 1, index);
+                widgets.move(index + 1, index);
                 widgets = widgets.splice(0);
                 state.widgets = widgets;
-            }
+            // }
             return state;
 
 

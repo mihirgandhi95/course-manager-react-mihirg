@@ -2,11 +2,11 @@ let _singleton = Symbol();
 
 
 
-const COURSE_API_URL = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course';
-const COURSE_API_URL_NEW = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course/CID';
+// const COURSE_API_URL = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course';
+// const COURSE_API_URL_NEW = 'https://cs5610-summer2-2018-mihirg.herokuapp.com/api/course/CID';
 
-// const COURSE_API_URL = 'http://localhost:8080/api/course';
-// const COURSE_API_URL_NEW = 'http://localhost:8080/api/course/CID';
+const COURSE_API_URL = 'http://localhost:8080/api/course';
+const COURSE_API_URL_NEW = 'http://localhost:8080/api/course/CID';
 
 
 class CourseService {
